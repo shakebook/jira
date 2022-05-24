@@ -1,6 +1,84 @@
-# Getting Started with Create React App
+# create-react-app 创建工程
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### npx create-react-app jira --template typescript
+
+# prettier 统一格式化工程文件
+
+### yarn add --dev --exact prettier
+
+### echo {}> .prettierrc.json
+
+# 创建一个.prettierignore 文件 Ignore artifacts:
+
+build
+coverage
+
+#手动使用 prettier 格式化所有文件
+
+### yarn prettier --write .
+
+# 检查文件是否符合 prettier 规范
+
+### npx prettier --check .
+
+# Install eslint-config-prettier:
+
+### npm install --save-dev eslint-config-prettier
+
+# 添加 "prettier" 到 "extends"中最后面
+
+{
+"extends": [
+"some-other-config-you-use",
+"prettier"
+]
+}
+
+# Install husky and lint-staged:
+
+### yarn add --dev husky lint-staged
+
+### npx husky install
+
+### npm set-script prepare "husky install"
+
+### npx husky add .husky/pre-commit "npx lint-staged"
+
+# Add the following to your package.json:
+
+{
+"lint-staged": {
+"\*_/_": "prettier --write --ignore-unknown"
+}
+}
+
+# 规范 git commit message
+
+### npm install --save-dev @commitlint/config-conventional @commitlint/cli
+
+### echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commitlint.config.js
+
+# 提交方法：
+
+[
+'build',
+'chore',
+'ci',
+'docs',
+'feat',
+'fix',
+'perf',
+'refactor',
+'revert',
+'style',
+'test'
+];
+
+### echo "foo: some message" # fails
+
+### echo "fix: some message" # passes
+
+### npx husky add .husky/commit-msg "npx yarn commitlint --edit $1"
 
 ## Available Scripts
 
